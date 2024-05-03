@@ -254,6 +254,56 @@
 
 // --------------------video-123 Creating a New Record--------------------------
 // ---------------------------------------------------------------------
+// import axios from "axios";
+// import { useState } from "react";
+// import BookCreate from "./components/BookCreate";
+// import BookList from "./components/BookList";
+// function App() {
+//   const [books, setBooks] = useState([]);
+
+//   const editBookById = (id, newTitle) => {
+//     const updatedBoooks = books.map((book) => {
+//       if (book.id === id) {
+//         return { ...books, title: newTitle };
+//       }
+
+//       return book;
+//     });
+
+//     setBooks(updatedBoooks);
+//   };
+
+//   const deleteBookById = (id) => {
+//     const updatedBoooks = books.filter((book) => {
+//       return book.id !== id;
+//     });
+
+//     setBooks(updatedBoooks);
+//   };
+//   const createBook = async (title) => {
+//     const response = await axios.post("http://localhost:3001/books", {
+//       title,
+//     });
+
+//     setBooks(response.data);
+
+//     const updatedBoooks = [...books, response.data];
+//     setBooks(updatedBoooks);
+//   };
+
+//   return (
+//     <div className="app">
+//       <h1>Reading List</h1>
+//       <BookList onEdit={editBookById} books={books} onDelete={deleteBookById} />
+//       <BookCreate onCreate={createBook} />
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// --------------------video-123 Creating a New Record--------------------------
+// ---------------------------------------------------------------------
 import axios from "axios";
 import { useState } from "react";
 import BookCreate from "./components/BookCreate";
@@ -282,20 +332,13 @@ function App() {
   };
   const createBook = async (title) => {
     const response = await axios.post("http://localhost:3001/books", {
-      title: "title",
+      title,
     });
 
-    console.log(response);
-    // setBooks(response.data)
+    setBooks(response.data);
 
-    // const updatedBoooks = [
-    //   ...books,
-    //   {
-    //     id: Math.round(Math.random() * 9999),
-    //     title: title,
-    //   },
-    // ];
-    // setBooks(updatedBoooks);
+    const updatedBoooks = [...books, response.data];
+    setBooks(updatedBoooks);
   };
 
   return (
