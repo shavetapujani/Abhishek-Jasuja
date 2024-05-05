@@ -429,18 +429,19 @@ import axios from "axios";
 import { useState } from "react";
 import BookCreate from "./components/BookCreate";
 import BookList from "./components/BookList";
+
 function App() {
   const [books, setBooks] = useState([]);
 
   const fetchBooks = async () => {
-    const response = await axios.get("http://localhost:30001/books");
+    const response = await axios.get("http://localhost:3001/books");
     setBooks(response.data);
   };
 
   fetchBooks();
 
   const editBookById = async (id, newTitle) => {
-    const response = await axios.put(`1http://localhost:3001/books/${id}`, {
+    const response = await axios.put(`http://localhost:3001/books/${id}`, {
       title: newTitle,
     });
 
